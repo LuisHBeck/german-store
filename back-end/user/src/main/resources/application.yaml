@@ -1,0 +1,13 @@
+spring:
+  datasource:
+    username: postgres
+    url: jdbc:postgresql://localhost:5433/german-store-user
+    password: root
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+
+server:
+  error:
+    include-stacktrace: never
