@@ -1,12 +1,14 @@
 package com.store.user.controller;
 
 import com.store.user.dto.UserRegistrationData;
+import com.store.user.model.User;
 import com.store.user.service.UserService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
@@ -25,8 +27,15 @@ public class UserController {
     }
 
     @GetMapping
-    public ResponseEntity list(@PageableDefault(size = 10, sort = {"id"}) Pageable pageable) {
-        var page = userService.listAllUsers(pageable);
-        return ResponseEntity.ok(page);
+    public ResponseEntity listUserByJWTData(@AuthenticationPrincipal User loggedUser) {
+        var user = userService.getUserByLoggedUser(loggedUser);
+        return ResponseEntity.ok(user);
     }
+
+//    @GetMapping
+//    public ResponseEntity list(@PageableDefault(size = 10, sort = {"id"}) Pageable pageable) {
+//        var page = userService.listAllUsers(pageable);
+//        return ResponseEntity.ok(page);
+
+//    }
 }

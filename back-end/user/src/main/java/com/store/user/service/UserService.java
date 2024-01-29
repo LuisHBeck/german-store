@@ -2,6 +2,7 @@ package com.store.user.service;
 
 import com.store.user.dto.UserDetailingData;
 import com.store.user.dto.UserRegistrationData;
+import com.store.user.infra.security.TokenService;
 import com.store.user.model.User;
 import com.store.user.repository.UserRepository;
 import jakarta.transaction.Transactional;
@@ -20,12 +21,20 @@ public class UserService {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
+    @Autowired
+    private TokenService tokenService;
+
     @Transactional
     public UserDetailingData createUser(UserRegistrationData data) {
         var encryptedPassword = encryptPassword(data.password());
         var user = new User(data.username(), encryptedPassword);
 
         userRepository.save(user);
+        return new UserDetailingData(user);
+    }
+
+    public UserDetailingData getUserByLoggedUser(User loggedUser) {
+        var user = userRepository.getReferenceById(loggedUser.getId());
         return new UserDetailingData(user);
     }
 
