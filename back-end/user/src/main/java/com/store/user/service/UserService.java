@@ -33,7 +33,7 @@ public class UserService {
         return new UserDetailingData(user);
     }
 
-    public UserDetailingData getUserByLoggedUser(User loggedUser) {
+    public UserDetailingData getUserByLoggedInfo(User loggedUser) {
         var user = userRepository.getReferenceById(loggedUser.getId());
         return new UserDetailingData(user);
     }

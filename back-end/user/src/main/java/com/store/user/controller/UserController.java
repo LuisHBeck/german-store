@@ -28,7 +28,7 @@ public class UserController {
 
     @GetMapping
     public ResponseEntity listUserByJWTData(@AuthenticationPrincipal User loggedUser) {
-        var user = userService.getUserByLoggedUser(loggedUser);
+        var user = userService.getUserByLoggedInfo(loggedUser);
         return ResponseEntity.ok(user);
     }
 
