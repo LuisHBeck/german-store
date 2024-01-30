@@ -31,4 +31,10 @@ public class ProductController {
         var page = productService.listProducts(pageable);
         return ResponseEntity.ok(page);
     }
+
+    @GetMapping("/{id}")
+    public ResponseEntity listProductById(@PathVariable Long id) {
+        var product =  productService.listProductById(id);
+        return ResponseEntity.ok(product);
+    }
 }

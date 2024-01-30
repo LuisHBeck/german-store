@@ -26,4 +26,9 @@ public class ProductService {
         var products = productRepository.findAll(pageable);
         return products.map(ProductDetailingData::new);
     }
+
+    public ProductDetailingData listProductById(Long id) {
+        var product = productRepository.getReferenceById(id);
+        return new ProductDetailingData(product);
+    }
 }
