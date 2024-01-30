@@ -30,14 +30,18 @@ public class Product {
     @Column(columnDefinition = "text")
     private String description;
 
+    private Integer stockQuantity;
+
     @Basic(fetch = FetchType.LAZY)
     private String fileName;
+
 
     public Product(ProductRequestData data) {
         this.name = data.name();
         this.productCategory = data.productCategory();
         this.price = data.price();
         this.description = data.description();
+        this.stockQuantity = data.stockQuantity();
         this.fileName = data.fileName();
     }
 }

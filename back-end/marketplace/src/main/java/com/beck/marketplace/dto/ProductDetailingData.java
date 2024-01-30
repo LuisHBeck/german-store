@@ -9,6 +9,7 @@ public record ProductDetailingData(
         ProductCategory productCategory,
         Double price,
         String description,
+        Integer stockQuantity,
         String fileName
 ) {
     public ProductDetailingData(Product product) {
@@ -18,6 +19,7 @@ public record ProductDetailingData(
                 product.getProductCategory(),
                 product.getPrice(),
                 product.getDescription(),
+                product.getStockQuantity(),
                 product.getFileName()
         );
     }

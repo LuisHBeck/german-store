@@ -21,6 +21,10 @@ public record ProductRequestData(
         @NotBlank
         String description,
 
+        @NotNull
+        @JsonAlias({"stock", "quantity"})
+        Integer stockQuantity,
+
         @JsonAlias({"image", "imageName"})
         String fileName
 
