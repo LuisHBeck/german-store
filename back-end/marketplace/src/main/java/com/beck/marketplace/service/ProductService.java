@@ -6,6 +6,8 @@ import com.beck.marketplace.model.Product;
 import com.beck.marketplace.repository.ProductRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -18,5 +20,10 @@ public class ProductService {
     public ProductDetailingData createProduct(ProductRequestData productData) {
         var product = productRepository.save(new Product(productData));
         return new ProductDetailingData(product);
+    }
+
+    public Page<ProductDetailingData> listProducts(Pageable pageable) {
+        var products = productRepository.findAll(pageable);
+        return products.map(ProductDetailingData::new);
     }
 }

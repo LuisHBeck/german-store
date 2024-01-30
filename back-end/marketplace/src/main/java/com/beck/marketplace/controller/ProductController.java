@@ -1,15 +1,34 @@
 package com.beck.marketplace.controller;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.beck.marketplace.dto.ProductRequestData;
+import com.beck.marketplace.service.ProductService;
+import jakarta.transaction.Transactional;
+import jakarta.validation.Valid;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.util.UriComponentsBuilder;
 
 @RestController
 @RequestMapping("/products")
 public class ProductController {
 
+    @Autowired
+    private ProductService productService;
+
+    @PostMapping
+    @Transactional
+    public ResponseEntity createProduct(@RequestBody @Valid ProductRequestData productData, UriComponentsBuilder uriBuilder) {
+        var product = productService.createProduct(productData);
+        var uri = uriBuilder.path("marketplace-service/products/{id}").build(product.id());
+        return ResponseEntity.created(uri).body(product);
+    }
+
     @GetMapping
-    public String getTest() {
-        return "Working perfectly!";
+    public ResponseEntity listProducts(@PageableDefault(sort = {"id"}) Pageable pageable) {
+        var page = productService.listProducts(pageable);
+        return ResponseEntity.ok(page);
     }
 }
