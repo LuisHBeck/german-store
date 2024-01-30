@@ -4,7 +4,7 @@ import styles from './style'
 import Input from '../../components/Input'
 import Button from '../../components/Button'
 
-export default function HomeScreen() {
+export default function SignUp() {
   return (
     <View style={styles.container}>
 

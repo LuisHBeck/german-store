@@ -2,8 +2,9 @@ import { View, Text } from 'react-native'
 import React from 'react'
 import { NavigationContainer } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
-import HomeScreen from './screens/SignUp/index'
-import ShopScreen from './screens/ShopScreen'
+import SignUp from './screens/SignUp/index'
+import Shop from './screens/Shop'
+import SignIn from './screens/SignIn'
 
 const Stack = createNativeStackNavigator()
 
@@ -14,8 +15,9 @@ export default function Navigation() {
         <Stack.Navigator screenOptions={{
           headerShown: false
         }}>
-            <Stack.Screen name="Home" component={HomeScreen} />
-            <Stack.Screen name="Shop" component={ShopScreen} />
+            <Stack.Screen name="Shop" component={Shop} />
+            <Stack.Screen name="SignIn" component={SignIn} />
+            <Stack.Screen name="SignUp" component={SignUp} />
         </Stack.Navigator>
     </NavigationContainer>
   )
