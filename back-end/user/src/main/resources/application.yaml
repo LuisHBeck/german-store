@@ -1,18 +1,28 @@
 spring:
   datasource:
     username: postgres
-    url: jdbc:postgresql://localhost:5433/german-store-user
+    url: jdbc:postgresql://localhost:5432/german-store-user
     password: root
 
   jpa:
     hibernate:
       ddl-auto: update
 
+  application:
+    name: user-service
+
 server:
   error:
     include-stacktrace: never
+
+  port: 0
 
 api:
   security:
     token:
       secret: ${JWT_SECRET:12345678}
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8765/eureka
