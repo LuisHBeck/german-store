@@ -1,0 +1,98 @@
+version: '3.9'
+services:
+  server:
+    container_name: server
+    build:
+      context: ./server
+    ports:
+      - 8765:8765
+    volumes:
+      - server-volume
+    networks:
+      - german-net
+
+  gateway:
+    depends_on:
+      - server
+    container_name: gateway
+    build:
+      context: ./gateway
+    ports:
+      - 8766:8766
+    volumes:
+      - gateway-volume
+    networks:
+      - german-net
+
+  user:
+    depends_on:
+      - user-db
+      - gateway
+    container_name: user
+    build:
+      context: ./user
+    environment:
+      - DATABASE_URL=jdbc:postgresql://localhost:6968/german_store_user
+    volumes:
+      - user-volume
+    networks:
+      - german-net
+
+  user-db:
+    image: postgres
+    environment:
+      POSTGRES_PASSWORD: root
+      POSTGRES_USER: postgres
+      POSTGRES_DB: german_store_user
+    ports:
+      - 6968:5432
+    volumes:
+      - user-db-volume:/var/lib/postgresql/data/
+    networks:
+      - german-net
+
+  marketplace:
+    depends_on:
+      - marketplace-db
+      - gateway
+      - user
+    container_name: marketplace
+    build:
+      context: ./marketplace
+    environment:
+      - DATABASE_URL=jdbc:postgresql://localhost:6969/german_store_marketplace
+    volumes:
+      - marketplace-volume
+    networks:
+      - german-net
+
+  marketplace-db:
+    image: postgres
+    environment:
+      POSTGRES_PASSWORD: root
+      POSTGRES_USER: postgres
+      POSTGRES_DB: german_store_marketplace
+    ports:
+      - 6969:5432
+    volumes:
+      - marketplace-db-volume:/var/lib/postgresql/data/
+    networks:
+      - german-net
+
+volumes:
+  server-volume:
+
+  gateway-volume:
+
+  user-volume:
+
+  user-db-volume:
+
+  marketplace-volume:
+
+  marketplace-db-volume:
+
+
+networks:
+  german-net:
+    driver: bridge
