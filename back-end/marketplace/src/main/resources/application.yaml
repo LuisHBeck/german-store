@@ -1,7 +1,7 @@
 spring:
   datasource:
     username: postgres
-    url: jdbc:postgresql://localhost:5432/german-store-marketplace
+    url: ${DATABASE_URL}
     password: root
 
   jpa:
