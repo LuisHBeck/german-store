@@ -10,13 +10,13 @@ export default function Shop() {
   return (
     <View style={styles.container}>
       
-      <View style={styles.imagem}>
+      {/* <View style={styles.imagem}>
         <Image
           source={require('../../assets/logopequena.png')}
           style={{width: '100%'}}
           resizeMode='contain'
         />
-      </View>
+      </View> */}
 
       <View style={styles.pesquisa}>
         <Input

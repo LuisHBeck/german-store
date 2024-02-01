@@ -16,12 +16,12 @@ export default function Products(props) {
         <View style={styles.layout}>
             <Text style={styles.valor}>{props.valor}</Text>
             <View style={styles.carrinho}>
-                <AntDesign 
+                {/* <AntDesign 
                     name='cart'
                     size={30}
                     color={'#fff'}
                     style={styles.icon}
-                />
+                /> */}
             </View>
         </View>
       </View>

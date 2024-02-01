@@ -16,7 +16,7 @@ const styles = StyleSheet.create({
         marginTop: 5,
     },
     pesquisa: {
-        marginTop: 20,
+        marginTop: 40,
         display: 'flex',
         padding: 20,
         flexDirection: 'row',
