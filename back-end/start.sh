@@ -2,19 +2,16 @@
 
 cd ./server
 mvn clean package -DskipTests
-cd ..
 
-cd ./gateway
+cd ../gateway
 mvn clean package -DskipTests
-cd ..
 
-cd ./user
+cd ../user
 mvn clean package -DskipTests
-cd ..
 
-cd ./marketplace
+cd ../marketplace
 mvn clean package -DskipTests
-cd ..
 
+cd ..
 docker-compose down
 docker-compose up --build
