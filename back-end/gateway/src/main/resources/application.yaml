@@ -2,6 +2,10 @@ server:
   port: 8766
 
 spring:
+  profiles:
+    active: local
+  #    active: docker
+
   application:
     name: gateway
 
@@ -12,8 +16,3 @@ spring:
           enabled: true
 
           lower-case-service-id: true
-
-eureka:
-  client:
-    serviceUrl:
-      defaultZone: ${EUREKA_URL}

@@ -15,8 +15,3 @@ server:
     include-stacktrace: never
 
     port: 0
-
-eureka:
-  client:
-    serviceUrl:
-      defaultZone: ${EUREKA_URL}

@@ -20,8 +20,3 @@ api:
   security:
     token:
       secret: ${JWT_SECRET:12345678}
-
-eureka:
-  client:
-    serviceUrl:
-      defaultZone: ${EUREKA_URL}
