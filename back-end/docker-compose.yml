@@ -34,7 +34,7 @@ services:
     build:
       context: ./user
     environment:
-      - DATABASE_URL=jdbc:postgresql://host.docker.internal:5432/german_store_user
+      - DATABASE_URL=jdbc:postgresql://host.dockeer.internal:5432/german_store_user
       - EUREKA_URL=http://server:8765/eureka
     volumes:
       - user-volume
