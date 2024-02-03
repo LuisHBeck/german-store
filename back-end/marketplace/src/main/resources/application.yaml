@@ -1,0 +1,23 @@
+spring:
+  datasource:
+    username: postgres
+    url: ${DATABASE_URL}
+    password: root
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+
+  application:
+    name: marketplace-service
+
+server:
+  error:
+    include-stacktrace: never
+
+    port: 0
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: ${EUREKA_URL}

@@ -1,0 +1,28 @@
+spring:
+  datasource:
+    username: postgres
+    url: ${DATABASE_URL}
+    password: root
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+
+  application:
+    name: user-service
+
+server:
+  error:
+    include-stacktrace: never
+
+  port: 0
+
+api:
+  security:
+    token:
+      secret: ${JWT_SECRET:12345678}
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: ${EUREKA_URL}
