@@ -1,8 +1,7 @@
 spring:
-  datasource:
-    username: postgres
-    url: ${DATABASE_URL}
-    password: root
+  profiles:
+    active: local
+  #    active: docker
 
   jpa:
     hibernate:

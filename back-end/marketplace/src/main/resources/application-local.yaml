@@ -1,0 +1,5 @@
+spring:
+  datasource:
+    username: postgres
+    url: jdbc:postgresql://localhost:5432/german_store_marketplace
+    password: root

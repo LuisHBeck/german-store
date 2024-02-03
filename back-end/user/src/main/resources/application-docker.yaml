@@ -1,0 +1,5 @@
+spring:
+  datasource:
+    username: postgres
+    url: ${DATABASE_URL}
+    password: root
