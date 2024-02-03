@@ -22,8 +22,9 @@ public class ProductService {
         return new ProductDetailingData(product);
     }
 
-    public Page<ProductDetailingData> listProducts(Pageable pageable) {
-        var products = productRepository.findAll(pageable);
+    public Page<ProductDetailingData> listProductsInStock(Pageable pageable) {
+//        var products = productRepository.findAll(pageable);
+        var products = productRepository.findByStockQuantityGreaterThan(0, pageable);
         return products.map(ProductDetailingData::new);
     }
 

@@ -28,7 +28,7 @@ public class ProductController {
 
     @GetMapping
     public ResponseEntity listProducts(@PageableDefault(sort = {"id"}) Pageable pageable) {
-        var page = productService.listProducts(pageable);
+        var page = productService.listProductsInStock(pageable);
         return ResponseEntity.ok(page);
     }
 
