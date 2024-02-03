@@ -28,62 +28,64 @@ services:
 
   user:
     depends_on:
-      - user-db
+#      - user-db
       - gateway
     container_name: user
     build:
       context: ./user
     environment:
-      - DATABASE_URL=jdbc:postgresql://user-db:6968/german_store_user
+      - DATABASE_URL=jdbc:postgresql://host.docker.internal:5432/german_store_user
       - EUREKA_URL=http://server:8765/eureka
     volumes:
       - user-volume
     networks:
       - german-net
 
-  user-db:
-    image: postgres
-    container_name: user-db
-    environment:
-      POSTGRES_PASSWORD: root
-      POSTGRES_USER: postgres
-      POSTGRES_DB: german_store_user
-    ports:
-      - 6968:5432
-    volumes:
-      - user-db-volume:/var/lib/postgresql/data/
-    networks:
-      - german-net
+#  user-db:
+#    image: postgres
+#    container_name: user-db
+#    environment:
+#      POSTGRES_PASSWORD: root
+#      POSTGRES_USER: postgres
+#      POSTGRES_DB: german_store_user
+#      POSTGRES_PORT: 6968
+#    ports:
+#      - 6968:6968
+#    volumes:
+#      - user-db-volume:/var/lib/postgresql/data/
+#    networks:
+#      - german-net
 
   marketplace:
     depends_on:
-      - marketplace-db
+#      - marketplace-db
       - gateway
       - user
     container_name: marketplace
     build:
       context: ./marketplace
     environment:
-      - DATABASE_URL=jdbc:postgresql://marketplace-db:6969/german_store_marketplace
+      - DATABASE_URL=jdbc:postgresql://host.docker.internal:5432/german_store_marketplace
       - EUREKA_URL=http://server:8765/eureka
     volumes:
       - marketplace-volume
     networks:
       - german-net
 
-  marketplace-db:
-    image: postgres
-    container_name: marketplace-db
-    environment:
-      POSTGRES_PASSWORD: root
-      POSTGRES_USER: postgres
-      POSTGRES_DB: german_store_marketplace
-    ports:
-      - 6969:5432
-    volumes:
-      - marketplace-db-volume:/var/lib/postgresql/data/
-    networks:
-      - german-net
+#  marketplace-db:
+#    image: postgres
+#    container_name: marketplace-db
+#    environment:
+#      POSTGRES_PASSWORD: root
+#      POSTGRES_USER: postgres
+#      POSTGRES_DB: german_store_marketplace
+#      POSTGRES_PORT: 6969
+#    ports:
+#      - 6969:6969
+#    volumes:
+#      - marketplace-db-volume:/var/lib/postgresql/data/
+#    networks:
+#      - german-net
 
 volumes:
   server-volume:
@@ -92,11 +94,11 @@ volumes:
 
   user-volume:
 
-  user-db-volume:
+#  user-db-volume:
 
   marketplace-volume:
 
-  marketplace-db-volume:
+#  marketplace-db-volume:
 
 
 networks:
