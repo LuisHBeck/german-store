@@ -1,0 +1,17 @@
+spring:
+  profiles:
+    active: local
+#    active: docker
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+
+  application:
+    name: transport-service
+
+server:
+  error:
+    include-stacktrace: never
+
+  port: 0
