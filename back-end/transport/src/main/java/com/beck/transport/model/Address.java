@@ -1,5 +1,6 @@
 package com.beck.transport.model;
 
+import com.beck.transport.dto.AddressInfoAPIData;
 import jakarta.persistence.*;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -23,4 +24,12 @@ public class Address {
     private String city;
 
     private String zipCode;
+
+    public Address(AddressInfoAPIData zipCodeAPIInfo, String number) {
+        this.street = zipCodeAPIInfo.street();
+        this.neighborhood = zipCodeAPIInfo.neighborhood();
+        this.number = number;
+        this.city = zipCodeAPIInfo.city();
+        this.zipCode = zipCodeAPIInfo.zipCode();
+    }
 }
