@@ -15,3 +15,7 @@ server:
     include-stacktrace: never
 
   port: 0
+
+api:
+  zipCode:
+    endpoint: http://viacep.com.br/ws/%s/json
