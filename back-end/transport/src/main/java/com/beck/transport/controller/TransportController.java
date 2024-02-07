@@ -23,5 +23,11 @@ public class TransportController {
         var uri = uriBuilder.path("/address/{id}").buildAndExpand(address.id()).toUri();
         return ResponseEntity.created(uri).body(address);
     }
+    
+    @GetMapping("/{zipCode}/{number}")
+    public ResponseEntity getAddressByData(@PathVariable String zipCode, @PathVariable String number) {
+        var address = addressService.getAddressByZipCodeAndNumber(zipCode, number);
+        return ResponseEntity.ok(address);
+    }
 
 }

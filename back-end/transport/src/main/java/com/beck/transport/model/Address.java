@@ -2,12 +2,16 @@ package com.beck.transport.model;
 
 import com.beck.transport.dto.AddressInfoAPIData;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "address")
 @EqualsAndHashCode(of = "id")
+@NoArgsConstructor
+@AllArgsConstructor
 @Getter
 public class Address {
 

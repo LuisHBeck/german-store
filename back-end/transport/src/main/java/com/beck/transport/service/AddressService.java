@@ -28,4 +28,10 @@ public class AddressService {
 
         return new AddressDetailingData(address);
     }
+
+    public AddressDetailingData getAddressByZipCodeAndNumber(String zipCode, String number) {
+        if(!zipCode.contains("-")) zipCode = zipCode.substring(0, 5) + "-" + zipCode.substring(5,8);
+        var address = addressRepository.findByZipCodeAndNumber(zipCode, number);
+        return new AddressDetailingData(address);
+    }
 }

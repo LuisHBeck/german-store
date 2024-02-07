@@ -4,4 +4,5 @@ import com.beck.transport.model.Address;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface AddressRepository extends JpaRepository<Address, Long> {
+    Address findByZipCodeAndNumber(String zipCode, String number);
 }
