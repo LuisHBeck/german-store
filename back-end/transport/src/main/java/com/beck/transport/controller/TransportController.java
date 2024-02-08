@@ -34,10 +34,4 @@ public class TransportController {
         var address = addressService.getAddressByZipCodeAndNumber(zipCode, number);
         return ResponseEntity.ok(address);
     }
-
-    @GetMapping
-    public void test() throws URISyntaxException, IOException, InterruptedException {
-        zipCodeService.getFreightByZipCode("17560015");
-    }
-
 }

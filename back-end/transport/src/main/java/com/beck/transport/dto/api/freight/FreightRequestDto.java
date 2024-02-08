@@ -6,7 +6,9 @@ public record FreightRequestDto(
       FreightFromToDto from,
       FreightFromToDto to,
       @SerializedName("package")
-      FreightPackageDto packageInfo
+      FreightPackageDto packageInfo,
+      @SerializedName("services")
+      String servicesId
 
 ) {
 }

@@ -14,7 +14,8 @@ server:
   error:
     include-stacktrace: never
 
-  port: 0
+#  port: 0
+  port: 8056
 
 api:
   zipCode:

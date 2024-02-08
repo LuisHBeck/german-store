@@ -1,5 +1,6 @@
 package com.beck.transport.service.zipCode;
 
+import com.beck.transport.dto.api.freight.FreightResponseDto;
 import com.beck.transport.dto.api.viacep.AddressInfoAPIData;
 import com.beck.transport.dto.api.viacep.ZipCodeAPIResultDto;
 import com.beck.transport.dto.api.freight.FreightFromToDto;
@@ -43,11 +44,12 @@ public class ZipCodeService {
         return new AddressInfoAPIData(apiResultInfo.getBody());
     }
 
-    public void getFreightByZipCode(String zipCode) throws URISyntaxException, IOException, InterruptedException {
+    public FreightResponseDto getFreightByZipCode(String zipCode) throws URISyntaxException, IOException, InterruptedException {
         FreightRequestDto freightDto = new FreightRequestDto(
                 new FreightFromToDto(shippingCompanyZipCode),
                 new FreightFromToDto(zipCode),
-                new FreightPackageDto(10, 20, 15, 1)
+                new FreightPackageDto(10, 20, 15, 1),
+                "2"
         );
         var freightDtoJSON = gson.toJson(freightDto);
 
@@ -60,6 +62,7 @@ public class ZipCodeService {
 
         HttpClient httpClient = HttpClient.newHttpClient();
         HttpResponse<String> httpResponse = httpClient.send(freightRequest, HttpResponse.BodyHandlers.ofString());
-        System.out.println(httpResponse.body());
+
+        return gson.fromJson(httpResponse.body(), FreightResponseDto.class);
     }
 }
