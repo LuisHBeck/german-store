@@ -1,10 +1,10 @@
 package com.beck.transport.service.zipCode;
 
-import com.beck.transport.dto.AddressInfoAPIData;
-import com.beck.transport.dto.ZipCodeAPIResultDto;
-import com.beck.transport.dto.freightAPI.FreightFromToDto;
-import com.beck.transport.dto.freightAPI.FreightPackageDto;
-import com.beck.transport.dto.freightAPI.FreightRequestDto;
+import com.beck.transport.dto.api.viacep.AddressInfoAPIData;
+import com.beck.transport.dto.api.viacep.ZipCodeAPIResultDto;
+import com.beck.transport.dto.api.freight.FreightFromToDto;
+import com.beck.transport.dto.api.freight.FreightPackageDto;
+import com.beck.transport.dto.api.freight.FreightRequestDto;
 import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;

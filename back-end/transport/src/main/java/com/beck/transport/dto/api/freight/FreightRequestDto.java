@@ -1,6 +1,5 @@
-package com.beck.transport.dto.freightAPI;
+package com.beck.transport.dto.api.freight;
 
-import com.fasterxml.jackson.annotation.JsonAlias;
 import com.google.gson.annotations.SerializedName;
 
 public record FreightRequestDto(

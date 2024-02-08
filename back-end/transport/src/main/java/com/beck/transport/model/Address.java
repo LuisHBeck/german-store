@@ -1,6 +1,6 @@
 package com.beck.transport.model;
 
-import com.beck.transport.dto.AddressInfoAPIData;
+import com.beck.transport.dto.api.viacep.AddressInfoAPIData;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;

@@ -1,10 +1,9 @@
-package com.beck.transport.dto;
+package com.beck.transport.dto.api.viacep;
 
 public record AddressInfoAPIData(
         String street,
         String neighborhood,
         String city,
-
         String zipCode
 
 ) {

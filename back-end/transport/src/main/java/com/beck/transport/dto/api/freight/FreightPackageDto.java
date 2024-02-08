@@ -1,4 +1,4 @@
-package com.beck.transport.dto.freightAPI;
+package com.beck.transport.dto.api.freight;
 
 public record FreightPackageDto(
         int height,
