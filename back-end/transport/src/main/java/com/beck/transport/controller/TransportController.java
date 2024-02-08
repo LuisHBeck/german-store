@@ -9,6 +9,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import java.io.IOException;
+import java.net.URISyntaxException;
+
 @RestController
 @RequestMapping("/address")
 public class TransportController {
@@ -16,6 +19,8 @@ public class TransportController {
     @Autowired
     private AddressService addressService;
 
+    @Autowired
+    private ZipCodeService zipCodeService;
 
     @PostMapping
     public ResponseEntity createAddress(@RequestBody @Valid AddressRequestDto data, UriComponentsBuilder uriBuilder) {
@@ -28,6 +33,11 @@ public class TransportController {
     public ResponseEntity getAddressByData(@PathVariable String zipCode, @PathVariable String number) {
         var address = addressService.getAddressByZipCodeAndNumber(zipCode, number);
         return ResponseEntity.ok(address);
+    }
+
+    @GetMapping
+    public void test() throws URISyntaxException, IOException, InterruptedException {
+        zipCodeService.getFreightByZipCode("17560015");
     }
 
 }
