@@ -15,7 +15,6 @@ public class ProductHasSufficientQuantityInStock implements PurchaseCreationVali
     @Override
     public void validate(PurchaseProductOrderDto product) {
         var hasSufficientQuantityInStock = productRepository.existsByIdAndStockQuantityGreaterThan(product.id(), product.amount());
-        System.out.println(hasSufficientQuantityInStock);
         if(!hasSufficientQuantityInStock) throw new ValidException(String.format("Product with id %s doesn't have sufficient quantity in stock", product.id()));
     }
 }
