@@ -1,4 +1,4 @@
-package com.beck.marketplace.service;
+package com.beck.marketplace.service.product;
 
 import com.beck.marketplace.dto.ProductDetailingData;
 import com.beck.marketplace.dto.ProductRequestData;

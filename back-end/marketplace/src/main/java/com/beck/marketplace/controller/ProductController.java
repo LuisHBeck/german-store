@@ -1,7 +1,7 @@
 package com.beck.marketplace.controller;
 
 import com.beck.marketplace.dto.ProductRequestData;
-import com.beck.marketplace.service.ProductService;
+import com.beck.marketplace.service.product.ProductService;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
