@@ -44,4 +44,8 @@ public class Product {
         this.stockQuantity = data.stockQuantity();
         this.fileName = data.fileName();
     }
+
+    public void updateStockQuantity(Integer purchaseAmount) {
+        this.stockQuantity -= purchaseAmount;
+    }
 }
