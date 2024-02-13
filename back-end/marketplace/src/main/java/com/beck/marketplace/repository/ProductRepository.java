@@ -9,4 +9,6 @@ import java.util.List;
 
 public interface ProductRepository extends JpaRepository<Product, Long> {
     Page<Product> findByStockQuantityGreaterThan(int stockQuantity, Pageable pageable);
+
+    boolean existsByIdAndStockQuantityGreaterThan(Long id, int stockQuantity);
 }
