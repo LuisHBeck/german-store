@@ -3,6 +3,7 @@ package com.beck.marketplace.service.purchase;
 import com.beck.marketplace.dto.PurchaseDetailingDto;
 import com.beck.marketplace.dto.PurchaseProductOrderDto;
 import com.beck.marketplace.dto.PurchaseRequestDto;
+import com.beck.marketplace.http.service.UserClientService;
 import com.beck.marketplace.model.PurchaseOrder;
 import com.beck.marketplace.repository.ProductRepository;
 import com.beck.marketplace.repository.PurchaseOrderRepository;
@@ -25,13 +26,19 @@ public class PurchaseService {
     @Autowired
     private List<PurchaseCreationValidators> purchaseCreationValidators;
 
+    @Autowired
+    private UserClientService userClientService;
+
     @Transactional
-    public PurchaseDetailingDto createPurchase(PurchaseRequestDto purchaseDto) {
+    public PurchaseDetailingDto createPurchase(PurchaseRequestDto purchaseDto, String tokenJWT) {
         purchaseDto.products().forEach(product -> {
             purchaseCreationValidators.forEach(v -> v.validate(product));
         });
 
+        var userId = userClientService.getUserId(tokenJWT);
+
         var purchaseOrder = new PurchaseOrder(purchaseDto);
+        purchaseOrder.setUserId(userId);
         purchaseOrder.setPurchaseValue(calculatePurchaseValue(purchaseDto.products()));
         purchaseOrderRepository.save(purchaseOrder);
 

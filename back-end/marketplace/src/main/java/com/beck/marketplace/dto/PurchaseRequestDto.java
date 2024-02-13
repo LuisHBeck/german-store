@@ -6,9 +6,9 @@ import jakarta.validation.constraints.NotNull;
 import java.util.List;
 
 public record PurchaseRequestDto(
-        @JsonAlias({"user"})
-        @NotNull
-        Long userId,
+//        @JsonAlias({"user"})
+//        @NotNull
+//        Long userId,
 
         @NotNull
         List<PurchaseProductOrderDto> products

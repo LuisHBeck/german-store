@@ -7,9 +7,10 @@ import java.util.List;
 
 public record PurchaseDetailingDto(
         Long id,
+        Long userId,
         List<PurchaseOrderItem> products
 ) {
     public PurchaseDetailingDto(PurchaseOrder purchaseOrder) {
-        this(purchaseOrder.getId(), List.copyOf(purchaseOrder.getPurchaseItems()));
+        this(purchaseOrder.getId(), purchaseOrder.getUserId(), List.copyOf(purchaseOrder.getPurchaseItems()));
     }
 }

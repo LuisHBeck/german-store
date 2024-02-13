@@ -30,7 +30,7 @@ public class PurchaseOrder {
     private double purchaseValue;
 
     public PurchaseOrder(PurchaseRequestDto purchaseData) {
-        this.userId = purchaseData.userId();
+//        this.userId = purchaseData.userId();
         this.purchaseItems = new ArrayList<>();
         purchaseData.products().forEach(item -> {
             var orderItem = new PurchaseOrderItem(item);
@@ -41,5 +41,9 @@ public class PurchaseOrder {
 
     public void setPurchaseValue(double purchaseValue) {
         this.purchaseValue = purchaseValue;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 }
