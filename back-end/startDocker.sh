@@ -12,6 +12,9 @@ mvn clean package -DskipTests
 cd ../marketplace
 mvn clean package -DskipTests
 
+cd ../transport
+mvn clean package -DskipTests
+
 cd ..
 docker-compose down
 docker-compose up --build
