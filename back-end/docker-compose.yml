@@ -28,37 +28,20 @@ services:
 
   user:
     depends_on:
-#      - user-db
       - gateway
     container_name: user
     build:
       context: ./user
     environment:
-      - DATABASE_URL=jdbc:postgresql://host.dockeer.internal:5432/german_store_user
+      - DATABASE_URL=jdbc:postgresql://host.docker.internal:5432/german_store_user
       - EUREKA_URL=http://server:8765/eureka
     volumes:
       - user-volume
     networks:
       - german-net
 
-#  user-db:
-#    image: postgres
-#    container_name: user-db
-#    environment:
-#      POSTGRES_PASSWORD: root
-#      POSTGRES_USER: postgres
-#      POSTGRES_DB: german_store_user
-#      POSTGRES_PORT: 6968
-#    ports:
-#      - 6968:6968
-#    volumes:
-#      - user-db-volume:/var/lib/postgresql/data/
-#    networks:
-#      - german-net
-
   marketplace:
     depends_on:
-#      - marketplace-db
       - gateway
       - user
     container_name: marketplace
@@ -72,6 +55,40 @@ services:
     networks:
       - german-net
 
+  transport:
+    depends_on:
+      - gateway
+      - marketplace
+    container_name: transport
+    build:
+      context: ./transport
+    environment:
+      - DATABASE_URL=jdbc:postgresql://host.docker.internal:5432/german_store_transport
+      - EUREKA_URL=http://server:8765/eureka
+    volumes:
+      - transport-volume
+    networks:
+      - german-net
+
+
+volumes:
+  server-volume:
+
+  gateway-volume:
+
+  user-volume:
+
+  marketplace-volume:
+
+  transport-volume:
+
+
+networks:
+  german-net:
+    driver: bridge
+
+
+# DB EXAMPLE
 #  marketplace-db:
 #    image: postgres
 #    container_name: marketplace-db
@@ -86,21 +103,3 @@ services:
 #      - marketplace-db-volume:/var/lib/postgresql/data/
 #    networks:
 #      - german-net
-
-volumes:
-  server-volume:
-
-  gateway-volume:
-
-  user-volume:
-
-#  user-db-volume:
-
-  marketplace-volume:
-
-#  marketplace-db-volume:
-
-
-networks:
-  german-net:
-    driver: bridge
