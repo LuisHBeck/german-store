@@ -1,13 +1,73 @@
 {
   "_type": "export",
   "__export_format": 4,
-  "__export_date": "2024-01-30T16:28:50.523Z",
-  "__export_source": "insomnia.desktop.app:v8.6.0",
+  "__export_date": "2024-02-17T22:15:37.233Z",
+  "__export_source": "insomnia.desktop.app:v8.4.5",
   "resources": [
     {
-      "_id": "req_5ea9bbd788b9458891600e1801d9eb9d",
-      "parentId": "fld_50a29a5005cf4571a8e5ad5fc6bc02ae",
-      "modified": 1706631802861,
+      "_id": "req_397c54a8bead4658ab7058f10db06651",
+      "parentId": "fld_ef3a5843e0354be4a5ef0e02bd026b3c",
+      "modified": 1708208058506,
+      "created": 1707698345793,
+      "url": "{{ _.url }}/purchase",
+      "name": "CREATE PURCHASE",
+      "description": "",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"products\": [\n\t\t{\n\t\t\t\"id\": 1,\n\t\t\t\"units\": 10\n\t\t},\n\t\t{\n\t\t\t\"id\": 2,\n\t\t\t\"units\": 4\n\t\t}\n\t]\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        },
+        {
+          "name": "User-Agent",
+          "value": "insomnia/8.4.5"
+        }
+      ],
+      "authentication": {
+        "type": "bearer",
+        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnZXJtYW4uc3RvcmUiLCJzdWIiOiJiZWNrMSIsImlkIjoxLCJleHAiOjE3MDgyMjU5NTR9.4fpbQu970rJ7U6J5Rx_iltDKfw_4TEnCLfy2RZNrC0A"
+      },
+      "metaSortKey": -1707698345793,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "fld_ef3a5843e0354be4a5ef0e02bd026b3c",
+      "parentId": "wrk_f0986d9a3fb845bca78b55639b6078d0",
+      "modified": 1707698342268,
+      "created": 1707698342268,
+      "name": "PURCHASE ORDER ",
+      "description": "",
+      "environment": {},
+      "environmentPropertyOrder": null,
+      "metaSortKey": -1707698342268,
+      "_type": "request_group"
+    },
+    {
+      "_id": "wrk_f0986d9a3fb845bca78b55639b6078d0",
+      "parentId": null,
+      "modified": 1706656937780,
+      "created": 1706656937780,
+      "name": "german-store-marketplace",
+      "description": "",
+      "scope": "collection",
+      "_type": "workspace"
+    },
+    {
+      "_id": "req_f3ff7928475244d1be9dc6e2e6b003ad",
+      "parentId": "fld_e1e107376a4248a39d660a1e4b48d664",
+      "modified": 1708207861030,
       "created": 1706631559503,
       "url": "{{ _.url }}/products",
       "name": "CREATE PRODUCT",
@@ -15,7 +75,7 @@
       "method": "POST",
       "body": {
         "mimeType": "application/json",
-        "text": "{\n\t\"name\": \"Xiaomi 12T\",\n\t\"category\": \"TECHNOLOGY\",\n\t\"price\": 3499.99,\n\t\"description\": \"A Xioamit Highline smartphone!\",\n\t\"image\": \"c://\"\n}"
+        "text": "{\n\t\"name\": \"Xiaomi 12T\",\n\t\"category\": \"TECHNOLOGY\",\n\t\"price\": 3499.99,\n\t\"description\": \"A Xioamit Highline smartphone!\",\n\t\"stock\": 150,\n\t\"image\": \"c://\"\n}"
       },
       "parameters": [],
       "headers": [
@@ -31,7 +91,6 @@
       "authentication": {},
       "metaSortKey": -1706631559503,
       "isPrivate": false,
-      "pathParameters": [],
       "settingStoreCookies": true,
       "settingSendCookies": true,
       "settingDisableRenderRequestBody": false,
@@ -41,8 +100,8 @@
       "_type": "request"
     },
     {
-      "_id": "fld_50a29a5005cf4571a8e5ad5fc6bc02ae",
-      "parentId": "wrk_c0f7425c8f584cd6add7ca6255c5a79f",
+      "_id": "fld_e1e107376a4248a39d660a1e4b48d664",
+      "parentId": "wrk_f0986d9a3fb845bca78b55639b6078d0",
       "modified": 1706631556837,
       "created": 1706631556837,
       "name": "PRODUCTS",
@@ -53,19 +112,9 @@
       "_type": "request_group"
     },
     {
-      "_id": "wrk_c0f7425c8f584cd6add7ca6255c5a79f",
-      "parentId": null,
-      "modified": 1706631548791,
-      "created": 1706631548791,
-      "name": "german-store-marketplace",
-      "description": "",
-      "scope": "collection",
-      "_type": "workspace"
-    },
-    {
-      "_id": "req_225fa371bf2c4d18897d032e66e3d409",
-      "parentId": "fld_50a29a5005cf4571a8e5ad5fc6bc02ae",
-      "modified": 1706631836075,
+      "_id": "req_5b1b59da2113477b9783d074912d5dcf",
+      "parentId": "fld_e1e107376a4248a39d660a1e4b48d664",
+      "modified": 1708207874845,
       "created": 1706631811052,
       "url": "{{ _.url }}/products",
       "name": "GET ALL PRODUCTS",
@@ -82,7 +131,6 @@
       "authentication": {},
       "metaSortKey": -1706631559403,
       "isPrivate": false,
-      "pathParameters": [],
       "settingStoreCookies": true,
       "settingSendCookies": true,
       "settingDisableRenderRequestBody": false,
@@ -92,9 +140,9 @@
       "_type": "request"
     },
     {
-      "_id": "req_0b1a303418514ea1b27f9fcf53240f5d",
-      "parentId": "fld_50a29a5005cf4571a8e5ad5fc6bc02ae",
-      "modified": 1706631883055,
+      "_id": "req_ed30f666d8c44452a80cb909720c4e94",
+      "parentId": "fld_e1e107376a4248a39d660a1e4b48d664",
+      "modified": 1708207883874,
       "created": 1706631846556,
       "url": "{{ _.url }}/products/1",
       "name": "GET BY ID",
@@ -111,7 +159,6 @@
       "authentication": {},
       "metaSortKey": -1706631559303,
       "isPrivate": false,
-      "pathParameters": [],
       "settingStoreCookies": true,
       "settingSendCookies": true,
       "settingDisableRenderRequestBody": false,
@@ -121,9 +168,9 @@
       "_type": "request"
     },
     {
-      "_id": "env_73650803585ea5cd40f921855aa2198c964fdade",
-      "parentId": "wrk_c0f7425c8f584cd6add7ca6255c5a79f",
-      "modified": 1706631638371,
+      "_id": "env_0c4bd7a57fb347fa87ac0aca98d2f709",
+      "parentId": "wrk_f0986d9a3fb845bca78b55639b6078d0",
+      "modified": 1708207849147,
       "created": 1706631548803,
       "name": "Base Environment",
       "data": {
@@ -140,8 +187,8 @@
       "_type": "environment"
     },
     {
-      "_id": "jar_73650803585ea5cd40f921855aa2198c964fdade",
-      "parentId": "wrk_c0f7425c8f584cd6add7ca6255c5a79f",
+      "_id": "jar_8f70d141d58740a2b54b5ec579346c57",
+      "parentId": "wrk_f0986d9a3fb845bca78b55639b6078d0",
       "modified": 1706631548805,
       "created": 1706631548805,
       "name": "Default Jar",
