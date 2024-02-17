@@ -29,14 +29,29 @@ services:
   user:
     depends_on:
       - gateway
+      - user-db
     container_name: user
     build:
       context: ./user
     environment:
-      - DATABASE_URL=jdbc:postgresql://host.docker.internal:5432/german_store_user
+      - DATABASE_URL=jdbc:postgresql://user-db:5432/german_store_user
       - EUREKA_URL=http://server:8765/eureka
     volumes:
       - user-volume
+    networks:
+      - german-net
+
+  user-db:
+    image: postgres
+    container_name: user-db
+    environment:
+      POSTGRES_PASSWORD: root
+      POSTGRES_USER: postgres
+      POSTGRES_DB: german_store_user
+    ports:
+      - 6968:5432
+    volumes:
+      - user-db-volume:/var/lib/postgresql/data/
     networks:
       - german-net
 
@@ -44,14 +59,29 @@ services:
     depends_on:
       - gateway
       - user
+      - marketplace-db
     container_name: marketplace
     build:
       context: ./marketplace
     environment:
-      - DATABASE_URL=jdbc:postgresql://host.docker.internal:5432/german_store_marketplace
+      - DATABASE_URL=jdbc:postgresql://marketplace-db:5432/german_store_marketplace
       - EUREKA_URL=http://server:8765/eureka
     volumes:
       - marketplace-volume
+    networks:
+      - german-net
+
+  marketplace-db:
+    image: postgres
+    container_name: marketplace-db
+    environment:
+      POSTGRES_PASSWORD: root
+      POSTGRES_USER: postgres
+      POSTGRES_DB: german_store_marketplace
+    ports:
+      - 6969:5432
+    volumes:
+      - marketplace-db-volume:/var/lib/postgresql/data/
     networks:
       - german-net
 
@@ -59,14 +89,29 @@ services:
     depends_on:
       - gateway
       - marketplace
+      - transport-db
     container_name: transport
     build:
       context: ./transport
     environment:
-      - DATABASE_URL=jdbc:postgresql://host.docker.internal:5432/german_store_transport
+      - DATABASE_URL=jdbc:postgresql://transport-db:5432/german_store_transport
       - EUREKA_URL=http://server:8765/eureka
     volumes:
       - transport-volume
+    networks:
+      - german-net
+
+  transport-db:
+    image: postgres
+    container_name: transport-db
+    environment:
+      POSTGRES_PASSWORD: root
+      POSTGRES_USER: postgres
+      POSTGRES_DB: german_store_transport
+    ports:
+      - 6970:5432
+    volumes:
+      - transport-db-volume:/var/lib/postgresql/data/
     networks:
       - german-net
 
@@ -78,28 +123,17 @@ volumes:
 
   user-volume:
 
+  user-db-volume:
+
   marketplace-volume:
 
+  marketplace-db-volume:
+
   transport-volume:
+
+  transport-db-volume:
 
 
 networks:
   german-net:
     driver: bridge
-
-
-# DB EXAMPLE
-#  marketplace-db:
-#    image: postgres
-#    container_name: marketplace-db
-#    environment:
-#      POSTGRES_PASSWORD: root
-#      POSTGRES_USER: postgres
-#      POSTGRES_DB: german_store_marketplace
-#      POSTGRES_PORT: 6969
-#    ports:
-#      - 6969:6969
-#    volumes:
-#      - marketplace-db-volume:/var/lib/postgresql/data/
-#    networks:
-#      - german-net
