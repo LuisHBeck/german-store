@@ -1,20 +1,14 @@
 #!/bin/bash
 
-cd ./server
-mvn clean package -DskipTests
+mvn_command="mvn clean package -DskipTests"
+services=("server" "gateway" "user" "marketplace" "transport")
 
-cd ../gateway
-mvn clean package -DskipTests
+for service in "${services[@]}"
+do
+  cd ./$service
+  $mvn_command
+  cd ..
+done
 
-cd ../user
-mvn clean package -DskipTests
-
-cd ../marketplace
-mvn clean package -DskipTests
-
-cd ../transport
-mvn clean package -DskipTests
-
-cd ..
 docker-compose down
 docker-compose up --build
